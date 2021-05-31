@@ -25,7 +25,7 @@ const initialState: CounterState = {
   count: 0,
 };
 
-function counter(state: CounterState, action: CounterAction) {
+function counter(state: CounterState = initialState, action: CounterAction) {
   switch (action.type) {
     case INCREASE:
       return { count: state.count + 1 };
