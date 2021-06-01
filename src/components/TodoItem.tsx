@@ -1,4 +1,5 @@
 import React from "react";
+import useClickAction from "../hooks/useClickAction";
 import { Todo } from "../modules/todos";
 
 type TodoItemProps = {
@@ -6,12 +7,19 @@ type TodoItemProps = {
 };
 
 function TodoItem({ todo }: TodoItemProps) {
+  const { onToggle, onRemove } = useClickAction(todo.id);
+
   return (
     <li>
-      <span style={{ textDecoration: todo.done ? "line-through" : "none" }}>
+      <span
+        style={{ textDecoration: todo.done ? "line-through" : "none" }}
+        onClick={onToggle}
+      >
         {todo.text}
       </span>
-      <button>삭제</button>
+      <button style={{ color: "red" }} onClick={onRemove}>
+        X
+      </button>
     </li>
   );
 }

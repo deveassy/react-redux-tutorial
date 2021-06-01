@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import useAddTodos from "../hooks/useAddTodos";
 
 function TodoForm() {
   const [value, setValue] = useState("");
+  const addTodo = useAddTodos();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -9,7 +11,7 @@ function TodoForm() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // dispatch 사용할 함수 자리
+    addTodo(value);
     setValue("");
   };
 
